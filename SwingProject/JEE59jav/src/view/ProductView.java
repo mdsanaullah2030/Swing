@@ -13,7 +13,7 @@ import util.DbUtil;
 
 /**
  *
- * @author HP
+ * @author HP product
  */
 public class ProductView extends javax.swing.JFrame {
     DbUtil db=new DbUtil();
@@ -25,27 +25,30 @@ public class ProductView extends javax.swing.JFrame {
         initComponents();
     }
     public void addProduct() {
-    String sql="insert into product(name,unitprice,quantity,totalPrice,salesPrice)values(?,?,?,?,?)";
+    String sql = "insert into product(name,unitPrice,quantity,totalPrice, salesPrice) values (?,?,?,?,?)";
         PreparedStatement ps;
+
         try {
-            ps=db.getCon().prepareStatement(sql);
+            ps = db.getCon().prepareStatement(sql);
+
+            ps.setString(1, textname.getText().trim());
+            ps.setFloat(2, Float.parseFloat(textunit.getText().trim()));
+            ps.setFloat(3, Float.parseFloat(textquantity.getText().trim()));
+            ps.setFloat(4, Float.parseFloat(texttotal.getText().trim()));
+            ps.setFloat(5, Float.parseFloat(textsales.getText().trim()));
             
-             ps.setString(1, textname.getText().trim());
-        ps.setFloat(2,Float.parseFloat(textunit.getText().trim()));
-        ps.setFloat(3,Float.parseFloat(textquantity.getText().trim()));
-        ps.setFloat(4,Float.parseFloat(texttotal.getText().trim()));
-        ps.setFloat(5,Float.parseFloat(textsales.getText().trim()));
-        
-        ps.executeUpdate();
-        ps.close();
-        db.getCon();
+            ps.executeUpdate();
+       ps.close();
+            db.getCon().close();
+            
             JOptionPane.showMessageDialog(this, "Add Product Successfully");
             
+
         } catch (SQLException ex) {
-             JOptionPane.showMessageDialog(this, "Add Product  unsuccessfully");
+            JOptionPane.showMessageDialog(this, "Add Product unsuccessfully");
             Logger.getLogger(ProductView.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-             JOptionPane.showMessageDialog(this, "Add Product  unsuccessfully");
+            JOptionPane.showMessageDialog(this, "Add Product unsuccessfully");
             Logger.getLogger(ProductView.class.getName()).log(Level.SEVERE, null, ex);
         }
        
@@ -84,7 +87,7 @@ public class ProductView extends javax.swing.JFrame {
         texttotal = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         textsales = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnName = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -95,7 +98,6 @@ public class ProductView extends javax.swing.JFrame {
         report = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1000, 650));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
@@ -142,6 +144,11 @@ public class ProductView extends javax.swing.JFrame {
         BtnStock.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BtnStockMouseClicked(evt);
+            }
+        });
+        BtnStock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnStockActionPerformed(evt);
             }
         });
 
@@ -206,6 +213,12 @@ public class ProductView extends javax.swing.JFrame {
 
         jLabel6.setText("Name");
         add.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
+
+        textname.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                textnameMouseClicked(evt);
+            }
+        });
         add.add(textname, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 150, -1));
 
         jLabel7.setText("Unit Price");
@@ -224,13 +237,13 @@ public class ProductView extends javax.swing.JFrame {
         add.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, -1, 20));
         add.add(textsales, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 150, -1));
 
-        jButton1.setText("Add");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnName.setText("Add");
+        btnName.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                btnNameMouseClicked(evt);
             }
         });
-        add.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, -1, -1));
+        add.add(btnName, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, -1, -1));
 
         jButton2.setBackground(new java.awt.Color(153, 0, 0));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
@@ -335,10 +348,18 @@ public class ProductView extends javax.swing.JFrame {
         mainView.setSelectedIndex(3);
     }//GEN-LAST:event_BtnReportMouseClicked
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void btnNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNameMouseClicked
         // TODO add your handling code here:
         addProduct();
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_btnNameMouseClicked
+
+    private void textnameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textnameMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textnameMouseClicked
+
+    private void BtnStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnStockActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnStockActionPerformed
 
     /**
      * @param args the command line arguments
@@ -381,7 +402,7 @@ public class ProductView extends javax.swing.JFrame {
     private javax.swing.JButton BtnSalesProduct;
     private javax.swing.JButton BtnStock;
     private javax.swing.JPanel add;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnName;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
