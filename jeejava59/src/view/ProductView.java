@@ -267,9 +267,9 @@ public class ProductView extends javax.swing.JFrame {
         return dateFormat.format(date);
     }
 
-    public static java.sql.Date convertUtilDateToSqlDate(String utilDate) {
+    public static java.sql.Date convertUtilDateToSqlDate(java.util.Date utilDate) {
         if (utilDate != null) {
-            return new java.sql.Date(utilDate.getTime);
+            return new java.sql.Date(utilDate.getTime());
         }
         return null;
     }
@@ -290,7 +290,9 @@ public class ProductView extends javax.swing.JFrame {
     }
     public void addSales() {
 
-        String date = formatDateToDDMMYYYY(salesDate);
+        //String date = formatDateToDDMMYYYY(salesDate);
+        
+        
         PreparedStatement ps;
         String sql = "insert into sales(name,salesUnitPrice,salesQuantity,salesTotalPrice,salesDate)"
                 + "values(?,?,?,?,?)";
@@ -300,10 +302,10 @@ public class ProductView extends javax.swing.JFrame {
             ps.setFloat(2, Float.parseFloat(txtSalesUnitPrice.getText()));
             ps.setFloat(3, Float.parseFloat(txtSalesQuantity.getText()));
             ps.setFloat(4, Float.parseFloat(txtSalesTotalPrice.getText()));
-            ps.setDate(5, convertUtilDateToSqlDate(date));
+            ps.setDate(5, convertUtilDateToSqlDate(salesDate.getDate()));
 
             ps.executeUpdate();
-            ps.executeUpdate();
+            
             ps.close();
             db.getCon().close();
 
