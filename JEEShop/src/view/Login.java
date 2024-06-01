@@ -12,7 +12,7 @@ public class Login extends javax.swing.JFrame {
     }
 
     public void getLogin() {
-        String userName = "jee";
+        String userName = "java";
         String password = "1234";
 
         String user = txtUserName.getText().trim();
@@ -54,6 +54,7 @@ public class Login extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         txtPassword = new javax.swing.JTextField();
         btnLogin = new javax.swing.JButton();
+        CheckShow = new javax.swing.JCheckBox();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -86,6 +87,12 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("User Name");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 35, 328, -1));
+
+        txtUserName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUserNameActionPerformed(evt);
+            }
+        });
         jPanel2.add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 73, 290, 50));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -105,6 +112,9 @@ public class Login extends javax.swing.JFrame {
         });
         jPanel2.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 288, -1, -1));
 
+        CheckShow.setText("Show");
+        jPanel2.add(CheckShow, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, -1, -1));
+
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, 340, 330));
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -122,6 +132,10 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         getLogin();
     }//GEN-LAST:event_btnLoginMouseClicked
+
+    private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUserNameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,6 +173,7 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox CheckShow;
     private javax.swing.JButton btnLogin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

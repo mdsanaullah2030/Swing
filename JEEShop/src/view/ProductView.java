@@ -714,12 +714,12 @@ public class ProductView extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Cambria", 3, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("JEE  STOR");
+        jLabel1.setText("IT  STOR");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 70));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 70));
 
-        jPanel2.setBackground(new java.awt.Color(0, 102, 102));
+        jPanel2.setBackground(new java.awt.Color(0, 51, 51));
 
         btnaddProduct.setBackground(new java.awt.Color(0, 0, 51));
         btnaddProduct.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
