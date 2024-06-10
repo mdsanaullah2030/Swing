@@ -6,3 +6,5 @@
 /testJDBC/dist/
 /testJDBC/build/
 /DBconn/nbproject/private/
+/JdbcConnecton/nbproject/private/
+/AutoCrateTable/nbproject/private/
