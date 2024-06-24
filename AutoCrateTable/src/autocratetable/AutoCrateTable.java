@@ -16,6 +16,7 @@ static ResultSet rs;
 static String sql="";
     public static void main(String[] args) {
         saveEmp("Mahabur","Mahabur@gmail.com" ,"1552478");
+        saveEmp("Raju","Raju@gmail.com" ,"15855478");
         
         showEmp();
         deleteEmp(2);
